@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeditBox: Image Editor </title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="static/css/home.css" type="text/css" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="forsara/dist/PerspectiveTransform.min.js"></script>
+    <script src="static/js/actions.js"></script>
+    <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<!--    <script src="static/js/canvas2image.js"></script>-->
+
+</head>
+<body>
+    <div id="init" class="container">
+        <label for="files">
+            <i id="upload" class="material-icons">backup</i>
+        </label>
+        <label for="files">
+            <a id="open-image">Upload your image </a>
+        </label>
+        <input id="files" style="visibility:hidden;" type="file" name="initFile">
+    </div>
+
+    <div id="home" style="display:none;" class="container-home">
+        <div id="workspace" >
+            <div id="image-section">
+                <img id="myImg" src="#" alt=""/>
+                <div class="slidecontainer" style="display:none">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                </div>
+
+            </div>
+
+            <div id="action-menu" style="display:none;">
+                <label>
+                    <i id="delete" class="material-icons menu">tv_off</i>
+                </label>
+                <label>
+                    <i id="drag" class="material-icons menu">open_with</i>
+                </label>
+                <label>
+                    <i id="resize" class="material-icons menu">crop</i>
+                </label>
+                <label>
+                    <i id="perspective" class="material-icons menu">zoom_out_map</i>
+                </label>
+                <label for="img-content">
+                    <i id="content" class="material-icons menu">insert_photo</i>
+                </label>
+                <input id="img-content" style="visibility:hidden;" type="file">
+
+            </div>
+        </div>
+        <div id="screen-section">
+            <i id="default" class="material-icons screen">tv</i>
+            <i id="grid" class="material-icons screen">grid_on</i>
+            <i class="material-icons screen">tv</i>
+            <i id="share" class="material-icons">open_in_new</i>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

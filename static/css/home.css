@@ -1,0 +1,196 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@font-face{
+    font-family:novecento_sans_widedemibold;
+    src:url(../fonts/novecentosanswide-demibold-webfont.woff2) format("woff2"),
+    url(../fonts/novecentosanswide-demibold-webfont.woff) format("woff");
+    font-weight:400;
+    font-style:normal
+    }
+@font-face{
+    font-family:novecento_sans_widemedium;
+    src:url(../fonts/novecentosanswide-medium-webfont.woff2) format("woff2"),
+    url(../fonts/novecentosanswide-medium-webfont.woff) format("woff");
+    font-weight:400;
+    font-style:normal;
+    }
+
+body,html{
+    position:fixed;
+    font-family:Open Sans,sans-serif;
+    margin:0;
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    font-size:20px;
+    color: #949494;
+    background-color:#171719;
+    }
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+
+    }
+
+.container-home{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    width:100%;
+    }
+
+.screen{
+    height: fit-content;
+    text-align: center;
+    color: #fff;
+    font-size: 10vw;
+    border: 8px solid transparent;
+    padding: 1%;
+    }
+.menu{
+    text-align: center;
+    color: #03a9f4;
+    background-color: #fff;
+    font-size: 5vw;
+    padding: 5%;
+    }
+
+.pt {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    margin-left: -10px;
+    margin-top: -10px;
+    border-radius: 15px;
+    background-color: #03a9f4;
+    cursor: pointer;
+}
+
+.slidecontainer {
+    position:relative;
+    z-index:2;
+    left:40%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 25vw; /* Full-width */
+  height: auto; /* Specified height */
+  background: #03a9f4; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 5%; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #fff; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+#upload {
+    font-size: 7vw;
+    color: #949494;
+}
+
+#open-image{
+    font-size: 5vw;
+    color: #949494;
+}
+
+#init{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#workspace{
+    height: 80%;
+    margin-bottom: 1%;
+}
+
+#screen-section{
+    height: 20%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#image-section{
+    width: 100%; /* or any custom size */
+    height: 100%;
+    margin-bottom: 1%;
+    position: relative;
+    z-index: 1;
+}
+
+#myImg {
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    z-index: 1;
+
+}
+
+#share{
+    font-size: 8vw;;
+    color: #fff;
+    order: 1;
+    position: fixed;
+    right: 0;
+    bottom: 0,
+    flex-basis: 100%;
+}
+
+#action-menu{
+    z-index: 2;
+    width: fit-content;
+    height: 45vw;
+    position: fixed;
+    right: -130px;
+    top: 74px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 1%;
+}
+
+
+
+
+
+
+
+
+
