@@ -57,7 +57,7 @@ body,html{
     text-align: center;
     color: #03a9f4;
     background-color: #fff;
-    font-size: 5vw;
+    font-size: 4vw;
     padding: 5%;
     }
 
@@ -175,15 +175,37 @@ body,html{
 #action-menu{
     z-index: 2;
     width: fit-content;
-    height: 45vw;
+    height: 35vw;
     position: fixed;
-    right: -130px;
+    right: -90px;
     top: 74px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     margin-right: 1%;
+}
+
+.grid-menu{
+
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin-left: inherit;
+    border:
+}
+
+.subset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.number{
+    font-size: 1.5vw;
+    color: white;
+    width: 3vw;
+    text-align: center;
 }
 
 

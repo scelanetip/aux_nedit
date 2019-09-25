@@ -1,4 +1,6 @@
 
+
+
 //function to upload an image and display on screen
 $(function () {
 $("#files").click(function(e) {
@@ -63,6 +65,9 @@ $('.screen').click(function(e){
 
     divID =$('.canvas-div').length;
 
+    //REVISAR!!!!!!
+    canvasID=divID;
+
     var elementID = 'canvas-div' + divID; // Unique ID
     var delementID = 'div' + divID;
     var celementID = 'canvas' + divID;
@@ -111,28 +116,14 @@ $('.screen').click(function(e){
     }).appendTo(container);
 
     if ($(this).attr("id") == "grid"){
-        console.log("grid");
-        for (i=0; i<4; i++) {
-            $('<div>').attr({
-                id: 'grid'+i+elementID,
-                class: 'grid'
-            }).css({
 
-                position: 'relative',
-                width: '50%',
+        $(".grid-menu").show();
+        $('#'+delementID).addClass("grid");
 
-                boxSizing: 'border-box',
-                height: '50%',
-                border: '10px solid rgb(61, 64, 68)',
-                zIndex: 3,
-                background: 'transparent'
-                //background: 'red'
+        changeGrid();
 
-            }).appendTo('#'+elementID);
-        }
-
-
-    }
+    }else{
+    $(".grid-menu").hide();}
 
 
     unperspective();
@@ -167,12 +158,35 @@ $(document).ready(function() {
         });
         $("#div"+ canvasID).css('border', '7px dashed #03a9f4');
 
-        //activateMenu("drag");
+        if ($(this).hasClass("grid")){
+            $(".grid-menu").show();
+        }else{
+            $(".grid-menu").hide();
+        }
     });
 
 });
 
-//function to manage action menu
+//Manage click on different GRIDS
+$(document).ready(function() {
+
+    $(document).on("click", ".number", function (event) {
+
+        $(".number").each(function() {
+            $(this).css('background-color', 'transparent');
+            $(this).attr("selected",false);
+
+        });
+            $(this).css('background-color', 'rgb(3, 169, 244)');
+            $(this).attr("selected",true);
+            deleteGrids();
+            changeGrid();
+
+    });
+
+});
+
+//Manage action menu
 
 function activateMenu(action) {
 
@@ -236,7 +250,7 @@ function activateMenu(action) {
 
 }
 
-//onclick control in action menu
+//onClick control in action menu
 
 $(function () {
 $('.menu').click(function(e){
@@ -244,6 +258,56 @@ $('.menu').click(function(e){
     activateMenu(action);
     });
 });
+
+//CHANGE GRID FUNCTION
+
+function changeGrid(){
+
+    n_grid = [9, '33.33%', '33.33%'];
+
+    $(".number").each(function() {
+        var attr = $(this).attr('selected');
+        if (attr){
+            sel_grid = parseInt($(this).attr("id"));
+            console.log(sel_grid);
+            switch(sel_grid) {
+                case 2: n_grid = [2, '50%', '100%'];break;
+                case 3: n_grid= [3, '33.33%', '100%'];break;
+                case 4: n_grid = [4, '50%', '50%'];break;
+                case 6: n_grid = [6, '33.33%', '50%'];break;
+                case 8: n_grid = [8, '25%', '50%'];break;
+                case 9: n_grid = [9, '33.33%', '33.33%'];break;
+                default: n_grid = [9, '33.33%', '33.33%'];break;
+                }
+            }
+
+    });
+
+    for (i=0; i<n_grid[0]; i++) {
+        $('<div>').attr({
+            id: 'grid'+i+canvasID,
+            class: 'canvas-grid'
+        }).css({
+
+            position: 'relative',
+            width: n_grid[1],
+
+            boxSizing: 'border-box',
+            height: n_grid[2],
+            border: '5px solid rgb(61, 64, 68)',
+            zIndex: 3,
+            background: 'transparent'
+
+        }).appendTo('#'+'canvas-div' + canvasID);
+    }
+}
+
+function deleteGrids(){
+
+    $('#'+'canvas-div' + canvasID).find('.canvas-grid').remove();
+
+    }
+
 
 //RESIZE FUNCTION
 function resize(){
