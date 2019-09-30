@@ -14,6 +14,8 @@
     <script src="forsara/dist/PerspectiveTransform.min.js"></script>
     <script src="static/js/actions.js"></script>
     <script src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!--    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>-->
 <!--    <script src="static/js/canvas2image.js"></script>-->
 
 </head>
@@ -51,12 +53,57 @@
                 <label>
                     <i id="perspective" class="material-icons menu">zoom_out_map</i>
                 </label>
-                <label for="img-content">
+<!--                <label for="img-content">-->
+                <label>
                     <i id="content" class="material-icons menu">insert_photo</i>
                 </label>
-                <input id="img-content" style="visibility:hidden;" type="file">
+<!--                <input id="img-content" style="visibility:hidden;" type="file">-->
 
             </div>
+
+            <div id="media-menu" style="display:none;">
+
+                <div id="myDropdown" class="dropdown-content">
+                    <button class="dropbtn">Hosteleria</button>
+                    <div id="hostel" style="display:none;" >
+                        <ul>
+                            <li class="dropbtn">
+                                <video autoplay loop>
+                                  <source src="static/bienvenida1.mp4" type="video/mp4">
+                                </video>
+                            </li>
+                            <li class="dropbtn">
+                                <video autoplay loop>
+                                  <source src="static/oferta_findesemana.mp4" type="video/mp4">
+                                </video>
+                            </li>
+                            <li class="dropbtn">
+                                <img src="static/descarga.jpeg" alt="bckgd">
+                            </li>
+                        </ul>
+                    </div>
+                    <button  class="dropbtn">Retail</button>
+                        <div id="retail" style="display:none;">
+                                <ul>
+                                    <li class="dropbtn">1</li>
+                                    <li class="dropbtn">2</li>
+                                    <li class="dropbtn">3</li>
+                                </ul>
+                        </div>
+                    <button class="dropbtn">Otros</button>
+                        <div id="oth" style="display:none;">
+                                <ul>
+                                    <li class="dropbtn">1</li>
+                                    <li class="dropbtn">2</li>
+                                    <li class="dropbtn">3</li>
+                                </ul>
+                        </div>
+
+                </div>
+
+
+            </div>
+
         </div>
         <div id="screen-section">
             <i id="default" class="material-icons screen">tv</i>

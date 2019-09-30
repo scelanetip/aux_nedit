@@ -26,6 +26,14 @@ body,html{
     background-color:#171719;
     }
 
+video{
+
+width: 100%;
+height: auto;}
+
+img{
+width: 100%;
+}
 
 .container{
     display: flex;
@@ -159,7 +167,6 @@ body,html{
     object-fit: contain;
     position: absolute;
     z-index: 1;
-
 }
 
 #share{
@@ -183,7 +190,44 @@ body,html{
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    margin-right: 1%;
+    margin-right: 3%;
+}
+
+#media-menu{
+    position: fixed;
+    z-index: 2;
+    left: -90px;
+    top: 74px;
+    margin-left: 3%;
+}
+
+.dropdown-content {
+  position: absolute;
+  height: 25vw;
+  width: fit-content;
+  background-color: transparent;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: #3498DB;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 2vw;
+}
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3498DB;
+  color: white;
+}
+
+.dropdown-content ul{
+
+  display: inline-block;
 }
 
 .grid-menu{
@@ -192,7 +236,6 @@ body,html{
     flex-direction: column;
     height: fit-content;
     margin-left: inherit;
-    border:
 }
 
 .subset{
@@ -207,6 +250,8 @@ body,html{
     width: 3vw;
     text-align: center;
 }
+
+
 
 
 

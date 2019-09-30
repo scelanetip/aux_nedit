@@ -206,6 +206,7 @@ function activateMenu(action) {
 
     switch(action){
         case 'delete':
+            $("#media-menu").hide();
             slidecontainer.hide();
             contentcontainer.hide();
             unperspective();
@@ -218,12 +219,14 @@ function activateMenu(action) {
             $("#div"+ canvasID).draggable({disabled: false});
             slidecontainer.hide();
             contentcontainer.hide();
+            $("#media-menu").hide();
             unperspective();
             break;
         case 'resize':
             $("#div"+ canvasID).draggable({disabled: true});
             slidecontainer.show();
             contentcontainer.hide();
+            $("#media-menu").hide();
             resize(canvasID);
             unperspective();
             break;
@@ -231,6 +234,7 @@ function activateMenu(action) {
             $("#div"+ canvasID).draggable({disabled: true});
             slidecontainer.hide();
             contentcontainer.hide();
+            $("#media-menu").hide();
             perspective();
             break;
         case 'content':
@@ -238,6 +242,7 @@ function activateMenu(action) {
             slidecontainer.hide();
             unperspective();
             contentcontainer.show();
+
             addContent();
             break;
         default:
@@ -245,6 +250,7 @@ function activateMenu(action) {
             slidecontainer.hide();
             contentcontainer.hide();
             unperspective();
+            $("#media-menu").hide();
             break;
         }
 
@@ -259,6 +265,23 @@ $('.menu').click(function(e){
     });
 });
 
+//function to manage media menu
+$(function () {
+    $(".dropbtn").click(function() {
+     if ($(this).is("button")){
+     if ($(this).nextUntil("button").is(":hidden")){
+            $(this).nextUntil("button").show();
+        }else{
+            $(this).nextUntil("button").hide();
+        }
+        }
+
+
+    });
+});
+
+
+
 //CHANGE GRID FUNCTION
 
 function changeGrid(){
@@ -269,7 +292,6 @@ function changeGrid(){
         var attr = $(this).attr('selected');
         if (attr){
             sel_grid = parseInt($(this).attr("id"));
-            console.log(sel_grid);
             switch(sel_grid) {
                 case 2: n_grid = [2, '50%', '100%'];break;
                 case 3: n_grid= [3, '33.33%', '100%'];break;
@@ -407,63 +429,72 @@ function perspective(){
 //ADD CONTENT FUNCTION
 function addContent(){
 
+    $("#media-menu").show();
     $("#canvas-div"+ canvasID).css('background', 'url(http://blog.angeloff.name/compass-canvas/assets/images/example-2.png)');
-    $(":file").change(function () {
-        if (this.files && this.files[0]) {
+
+    $('li').click(function(e){
+        var celementID = 'canvas-div' + canvasID;
+        if ($(this).children().is("video")){
+            filename = $(this).children().children().attr('src');
+        } else{
+            filename = $(this).children().attr('src');
+        }
+
+//    $(":file").change(function () {
+//        if (this.files && this.files[0]) {
+
+//filename = this.files[0].name;
+        var re = /(?:\.([^.]+))?$/;
+        var ext = re.exec(filename)[1];
+
+        if (ext=="png" || ext=="jpeg" || ext=="jpg") {
+            $('#video'+canvasID).remove();
+            $('#img'+canvasID).remove();
+
+            $('<img>').attr({
+                id: "img"+canvasID,
+                src: filename
+            }).css({
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                left: '0',
+                boxSizing: 'border-box',
+                zIndex: 2
+            }).appendTo('#canvas-div' + canvasID);
+        }else{
+            $('#video'+canvasID).remove();
+            $('#img'+canvasID).remove();
+            $('<video>').attr({
+                id: "video"+canvasID
+            }).css({
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                left: '0',
+                boxSizing: 'border-box',
+                border: '10px solid transparent',
+                zIndex: 2
+            }).appendTo('#canvas-div' + canvasID);
 
 
-            var celementID = 'canvas-div' + canvasID;
-
-            filename = this.files[0].name;
-            var re = /(?:\.([^.]+))?$/;
-            var ext = re.exec(filename)[1];
-
-            if (ext=="png" || ext=="jpeg" || ext=="jpg") {
-                $('#video'+canvasID).remove();
-                $('#img'+canvasID).remove();
-
-                $('<img>').attr({
-                    id: "img"+canvasID,
-                    src: "static/"+ filename
-                }).css({
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    left: '0',
-                    boxSizing: 'border-box',
-                    zIndex: 2
-                }).appendTo('#canvas-div' + canvasID);
-            }else{
-                $('#video'+canvasID).remove();
-                $('#img'+canvasID).remove();
-                $('<video>').attr({
-                    id: "video"+canvasID
-                }).css({
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    left: '0',
-                    boxSizing: 'border-box',
-                    border: '10px solid transparent',
-                    zIndex: 2
-                }).appendTo('#canvas-div' + canvasID);
+            $('<source>').attr({
+                src: filename,
+                type: "video/mp4"
+            }).appendTo('#video'+canvasID);
 
 
-                $('<source>').attr({
-                    src: "static/"+ filename,
-                    type: "video/mp4"
-                }).appendTo('#video'+canvasID);
+            $('#video'+canvasID)[0].autoplay = true;
+            $('#video'+canvasID)[0].controls = true;
+            $('#video'+canvasID)[0].loop = true;
 
-
-                $('#video'+canvasID)[0].autoplay = true;
-                $('#video'+canvasID)[0].controls = true;
-                $('#video'+canvasID)[0].loop = true;
-
-                $("#canvas-div"+ canvasID).css('background', 'black');
-
-            }
+            $("#canvas-div"+ canvasID).css('background', 'black');
 
         }
+
     });
+
+////        }
+////    });
 }
 
