@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>NeditBox: Image Editor </title>
+
+    <link rel="stylesheet" href="static/css/nedit.css" type="text/css" charset="utf-8"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="static/js/perspective.js "></script>
+    <script src="static/js/main.js"></script>
+<!--    <script src="{% static 'dist/accp.js' %}"></script>-->
+
+</head>
+<body>
+
+
+
+    <div id="home">
+
+        <div id="wrap">
+
+            <a id="home-logo" href=""> neditbox </a>
+
+            <div id="menu-section">
+                <div class="flatbox">
+                    <label for="files">
+                        <a id="home-open-image" class="button positive pad-20">open image </a>
+                    </label>
+                    <input id="files" style="visibility:hidden;" type="file" onchange="previewFile()">
+                    <small class="tip pad-16" style="display: block">Upload a picture of your place and let's see how
+                        our fancy tvs look inside!
+                    </small>
+                </div>
+            </div>
+
+            <div id="home-section">
+
+                <div class="flatbox" id="home-box" style="min-height:400px;">
+                    <img  id="imgedit"  src="" alt="" style=" max-width:75%;
+                    max-height:75%;" />
+                </div>
+
+                <div id="container"  class="dropzone">
+                    <p style="flex-grow:3; ">AVAILABLE TVs</p>
+                    <div>
+                        <canvas id="canvas-perspective" class="interactable" ></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

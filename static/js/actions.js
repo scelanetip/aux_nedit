@@ -83,7 +83,7 @@ $('.screen').click(function(e){
         zIndex: 80,
         left: '26%' ,
         top: '22%',
-        border: '7px solid transparent'
+        border: '1vw solid transparent'
     }).appendTo('#workspace').draggable({ disabled: true });
 
     $('<div>').attr({
@@ -96,7 +96,7 @@ $('.screen').click(function(e){
         position: 'absolute',
         height: '100%',
         width: '100%',
-        border: '10px solid rgb(61, 64, 68)',
+        border: '1.5vw solid rgb(61, 64, 68)',
         boxSizing: 'border-box',
         background: 'slategrey'
     }).appendTo('#'+delementID);
@@ -136,11 +136,11 @@ $('.screen').click(function(e){
     activateMenu("drag");
 
     $(".screen").each(function() {
-        $(this).css('border', '8px solid transparent');
+        $(this).css('border', '1vw solid transparent');
         $(this).attr("selected",false);
 
     });
-    $(this).css('border', '8px solid #03a9f4');
+    $(this).css('border', '1vw solid #03a9f4');
     $(this).attr("selected",true);
     });
 });
@@ -154,9 +154,9 @@ $(document).ready(function() {
         var matches = ($(this).attr('id')).match(/(\d+)/);
         canvasID = matches[0];
         $(".canvas-div").each(function() {
-            $(this).css('border', '7px solid transparent');
+            $(this).css('border', '1vw solid transparent');
         });
-        $("#div"+ canvasID).css('border', '7px dashed #03a9f4');
+        $("#div"+ canvasID).css('border', '1vw dashed #03a9f4');
 
         if ($(this).hasClass("grid")){
             $(".grid-menu").show();
@@ -316,7 +316,7 @@ function changeGrid(){
 
             boxSizing: 'border-box',
             height: n_grid[2],
-            border: '5px solid rgb(61, 64, 68)',
+            border: '0.5vw solid rgb(61, 64, 68)',
             zIndex: 3,
             background: 'transparent'
 
@@ -395,7 +395,7 @@ function perspective(){
     var targetPoint;
 
     function onMouseMove(e) {
-        $("#div"+ canvasID).css('border', '7px solid transparent');
+        $("#div"+ canvasID).css('border', '1.5vw solid transparent');
         targetPoint.x = e.pageX - container.offset().left ;
         targetPoint.y = e.pageY - container.offset().top ;
 //        console.log(targetPoint.x,targetPoint.y);
@@ -473,7 +473,7 @@ function addContent(){
                 height: '100%',
                 left: '0',
                 boxSizing: 'border-box',
-                border: '10px solid transparent',
+                border: '1.5vw solid transparent',
                 zIndex: 2
             }).appendTo('#canvas-div' + canvasID);
 
@@ -486,6 +486,7 @@ function addContent(){
 
             $('#video'+canvasID)[0].autoplay = true;
             $('#video'+canvasID)[0].controls = true;
+            $('#video'+canvasID).attr("playsinline", true);
             $('#video'+canvasID)[0].loop = true;
 
             $("#canvas-div"+ canvasID).css('background', 'black');
