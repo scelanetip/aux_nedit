@@ -1,9 +1,57 @@
 
+//function onDeviceReady() {
+//    if (navigator.connection.type == Connection.NONE) {
+//      navigator.notification.alert('An internet connection is required to continue');
+//    } else {
+//      window.location="http://192.168.1.182:8080/";
+//    }
+//  }
+//  document.addEventListener("deviceready", onDeviceReady, false);
 
+
+//Manage click on different TVS
+$(document).ready(function() {
+
+
+    $(document).on("click touch", ".canvas-div", function (event) {
+        //event.preventDefault();
+        //canvasID = $(this).attr('id');
+        var matches = ($(this).attr('id')).match(/(\d+)/);
+        canvasID = matches[0];
+        $(".canvas-div").each(function() {
+            $(this).css('border', '1vw solid transparent');
+        });
+        $("#div"+ canvasID).css('border', '1vw dashed #03a9f4');
+
+        if ($(this).hasClass("grid")){
+            $(".grid-menu").show();
+        }else{
+            $(".grid-menu").hide();
+        }
+    });
+
+//Manage click on different GRIDS
+    $(document).on("click touch", ".number", function (event) {
+
+        $(".number").each(function() {
+            $(this).css('background-color', 'transparent');
+            $(this).attr("selected",false);
+
+        });
+            $(this).css('background-color', 'rgb(3, 169, 244)');
+            $(this).attr("selected",true);
+            deleteGrids();
+            changeGrid();
+
+    });
+
+
+});
 
 //function to upload an image and display on screen
 $(function () {
-$("#files").click(function(e) {
+$("#files").on('click touch', function (e) {
+
 
     $(":file[name=initFile]").change(function () {
         if (this.files && this.files[0]) {
@@ -24,7 +72,7 @@ var canvasID, initWidth, initHeight = 0;
 
 //function to handle SAVE IMAGE button
 $(function () {
-    $('#share').click(function(e){
+    $('#share').on('click touch', function (e) {
         html2canvas(document.body).then(canvas => {
             $(canvas).attr({
                 id: "myCanvas"
@@ -61,7 +109,8 @@ $(function () {
 
 //function to select a screen and make it appear over the image
 $(function () {
-$('.screen').click(function(e){
+$('.screen').on('click touch', function (e) {
+
 
     divID =$('.canvas-div').length;
 
@@ -145,45 +194,21 @@ $('.screen').click(function(e){
     });
 });
 
-//Manage click on different TVS
-$(document).ready(function() {
 
-    $(document).on("click", ".canvas-div", function (event) {
-        event.preventDefault();
-        //canvasID = $(this).attr('id');
-        var matches = ($(this).attr('id')).match(/(\d+)/);
-        canvasID = matches[0];
-        $(".canvas-div").each(function() {
-            $(this).css('border', '1vw solid transparent');
-        });
-        $("#div"+ canvasID).css('border', '1vw dashed #03a9f4');
 
-        if ($(this).hasClass("grid")){
-            $(".grid-menu").show();
-        }else{
-            $(".grid-menu").hide();
-        }
+//
+//$(document).ready(function() {
+//
+//
+//});
+
+//onClick control in action menu
+
+$(function () {
+$('.menu').on('click touch', function (e) {
+    action = $(this).attr('id');
+    activateMenu(action);
     });
-
-});
-
-//Manage click on different GRIDS
-$(document).ready(function() {
-
-    $(document).on("click", ".number", function (event) {
-
-        $(".number").each(function() {
-            $(this).css('background-color', 'transparent');
-            $(this).attr("selected",false);
-
-        });
-            $(this).css('background-color', 'rgb(3, 169, 244)');
-            $(this).attr("selected",true);
-            deleteGrids();
-            changeGrid();
-
-    });
-
 });
 
 //Manage action menu
@@ -256,18 +281,11 @@ function activateMenu(action) {
 
 }
 
-//onClick control in action menu
 
-$(function () {
-$('.menu').click(function(e){
-    action = $(this).attr('id');
-    activateMenu(action);
-    });
-});
 
 //function to manage media menu
 $(function () {
-    $(".dropbtn").click(function() {
+    $(".dropbtn").on('click touch', function (e) {
      if ($(this).is("button")){
      if ($(this).nextUntil("button").is(":hidden")){
             $(this).nextUntil("button").show();
