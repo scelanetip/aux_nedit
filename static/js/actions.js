@@ -9,10 +9,10 @@
 //  document.addEventListener("deviceready", onDeviceReady, false);
 
 
-//Manage click on different TVS
-$(document).ready(function() {
 
+//$(document).ready(function() {
 
+    //Manage click on different TVS
     $(document).on("click touch", ".canvas-div", function (event) {
         //event.preventDefault();
         //canvasID = $(this).attr('id');
@@ -46,7 +46,7 @@ $(document).ready(function() {
     });
 
 
-});
+//});
 
 //function to upload an image and display on screen
 $(function () {
@@ -391,7 +391,6 @@ function perspective(){
 //    var IMG_HEIGHT = $("#image-section").height();
     pts.show();
 
-
     var transform = new PerspectiveTransform(img[0], IMG_WIDTH, IMG_HEIGHT, true);
     var tl = pts.filter(".tl").css({
         left : transform.topLeft.x,
@@ -413,7 +412,7 @@ function perspective(){
     var targetPoint;
 
     function onMouseMove(e) {
-        $("#div"+ canvasID).css('border', '1.5vw solid transparent');
+        console.log(e)
         targetPoint.x = e.pageX - container.offset().left ;
         targetPoint.y = e.pageY - container.offset().top ;
 //        console.log(targetPoint.x,targetPoint.y);
@@ -427,11 +426,14 @@ function perspective(){
             transform.update();
             img.show();
         }else{
-            console.log(transform.checkError())
+//            console.log(transform.checkError())
             img.hide();
         }
     }
+//    pts.mousedown(function(e) {
+    $("#div"+ canvasID).css('border', '1.5vw solid transparent');
 
+    pts.draggable();
     pts.mousedown(function(e) {
         target = $(this);
         targetPoint = target.hasClass("tl") ? transform.topLeft : target.hasClass("tr") ? transform.topRight : target.hasClass("bl") ? transform.bottomLeft : transform.bottomRight;
@@ -441,6 +443,41 @@ function perspective(){
             $(window).unbind('mousemove', onMouseMove);
         })
     });
+//    pts.on('touchstart', function (e) {
+//        //e.preventDefault();
+//        pts.draggable({disabled: false});
+//        target = $(this);
+//        targetPoint = target.hasClass("tl") ? transform.topLeft : target.hasClass("tr") ? transform.topRight : target.hasClass("bl") ? transform.bottomLeft : transform.bottomRight;
+//        onMouseMove.apply(this, Array.prototype.slice.call(arguments));
+//        //$(window).mousemove(onMouseMove);
+//        $(window).on('touchmove', onMouseMove);
+
+        //$(window).mouseup(function() {
+//        $(window).on('touchend', function (ev) {
+//            console.log(ev);
+//            //$(window).unbind('mousemove', onMouseMove);
+//            $(window).unbind('touchmove', onMouseMove);
+//            pts.draggable({disabled: true});
+//        });
+//        pts.draggable({disabled: false});
+//        pts.on('mousedown', function (e) {
+//        e.preventDefault();
+//        $("#div"+ canvasID).css('border', '1.5vw solid transparent');
+//        target = $(this);
+//        targetPoint = target.hasClass("tl") ? transform.topLeft : target.hasClass("tr") ? transform.topRight : target.hasClass("bl") ? transform.bottomLeft : transform.bottomRight;
+//        onMouseMove.apply(this, Array.prototype.slice.call(arguments));
+//        //$(window).mousemove(onMouseMove);
+//        $(window).on('mousemove', onMouseMove);
+//
+//        //$(window).mouseup(function() {
+//        $(window).on('mouseup', function (ev) {
+//            $("#div"+ canvasID).css('border', '1.5vw solid transparent');
+//            $(window).unbind('mousemove', onMouseMove(ev));
+//            //$(window).unbind('touchmove', onMouseMove(ev));
+//            //pts.draggable({disabled: true});
+//        });
+
+
 }
 
 
