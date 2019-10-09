@@ -12,38 +12,38 @@
 
 //$(document).ready(function() {
 
-    //Manage click on different TVS
-    $(document).on("click touch", ".canvas-div", function (event) {
-        //event.preventDefault();
-        //canvasID = $(this).attr('id');
-        var matches = ($(this).attr('id')).match(/(\d+)/);
-        canvasID = matches[0];
-        $(".canvas-div").each(function() {
-            $(this).css('border', '1vw solid transparent');
-        });
-        $("#div"+ canvasID).css('border', '1vw dashed #03a9f4');
-
-        if ($(this).hasClass("grid")){
-            $(".grid-menu").show();
-        }else{
-            $(".grid-menu").hide();
-        }
+//Manage click on different TVS
+$(document).on("click touch touchmove", ".canvas-div", function (event) {
+    //event.preventDefault();
+    //canvasID = $(this).attr('id');
+    var matches = ($(this).attr('id')).match(/(\d+)/);
+    canvasID = matches[0];
+    $(".canvas-div").each(function() {
+        $(this).css('border', '0.5vw solid transparent');
     });
+    $("#div"+ canvasID).css('border', '0.5vw dashed #03a9f4');
+
+    if ($(this).hasClass("grid")){
+        $(".grid-menu").show();
+    }else{
+        $(".grid-menu").hide();
+    }
+});
 
 //Manage click on different GRIDS
-    $(document).on("click touch", ".number", function (event) {
+$(document).on("click touch", ".number", function (event) {
 
-        $(".number").each(function() {
-            $(this).css('background-color', 'transparent');
-            $(this).attr("selected",false);
-
-        });
-            $(this).css('background-color', 'rgb(3, 169, 244)');
-            $(this).attr("selected",true);
-            deleteGrids();
-            changeGrid();
+    $(".number").each(function() {
+        $(this).css('background-color', 'transparent');
+        $(this).attr("selected",false);
 
     });
+        $(this).css('background-color', 'rgb(3, 169, 244)');
+        $(this).attr("selected",true);
+        deleteGrids();
+        changeGrid();
+
+});
 
 
 //});
@@ -132,8 +132,8 @@ $('.screen').on('click touch', function (e) {
         zIndex: 80,
         left: '26%' ,
         top: '22%',
-        border: '1vw solid transparent'
-    }).appendTo('#workspace').draggable({ disabled: true });
+        border: '0.5vw solid transparent'
+    }).appendTo('#workspace').draggable();
 
     $('<div>').attr({
         id: elementID,
@@ -145,7 +145,7 @@ $('.screen').on('click touch', function (e) {
         position: 'absolute',
         height: '100%',
         width: '100%',
-        border: '1.5vw solid rgb(61, 64, 68)',
+        border: '0.5vw solid rgb(61, 64, 68)',
         boxSizing: 'border-box',
         background: 'slategrey'
     }).appendTo('#'+delementID);
@@ -182,7 +182,7 @@ $('.screen').on('click touch', function (e) {
 
     //call menu action function with drag by default
 
-    activateMenu("drag");
+    //activateMenu();
 
     $(".screen").each(function() {
         $(this).css('border', '1vw solid transparent');
@@ -195,12 +195,32 @@ $('.screen').on('click touch', function (e) {
 });
 
 
+$(function () {
 
-//
-//$(document).ready(function() {
-//
-//
-//});
+var slidecontainer = $(".slidecontainer");
+var contentcontainer = $(".content-container");
+$('#menu-icon').on('click touch', function (e) {
+    console.log("entra");
+    console.log($(this).hasClass('unselected') );
+    if($(this).hasClass('unselected')){
+        $("#action-menu").show();
+        $(this).css('color', '#fff');
+        $(this).css('background-color', '#03a9f4');
+
+        $(this).removeClass('unselected').addClass('selected');
+    }else{
+        $("#action-menu").hide();
+        $(this).css('color', '#03a9f4');
+        $(this).css('background-color', '#fff');
+        $(this).removeClass('selected').addClass('unselected');
+        slidecontainer.hide();
+        contentcontainer.hide();
+        unperspective();
+        $("#media-menu").hide();
+    }
+
+    });
+});
 
 //onClick control in action menu
 
@@ -215,7 +235,7 @@ $('.menu').on('click touch', function (e) {
 
 function activateMenu(action) {
 
-    $("#action-menu").show();
+//    $("#action-menu").show();
     $(".menu").each(function() {
         $(this).css('background-color', '#fff');
         $(this).css('color', '#03a9f4')
@@ -235,20 +255,20 @@ function activateMenu(action) {
             slidecontainer.hide();
             contentcontainer.hide();
             unperspective();
-            $("#div"+ canvasID).draggable({disabled: true});
+            //$("#div"+ canvasID).draggable({disabled: true});
             $("#div"+ canvasID).remove();
             $("#canvas-div"+ canvasID).remove();
 
             break;
-        case 'drag':
-            $("#div"+ canvasID).draggable({disabled: false});
-            slidecontainer.hide();
-            contentcontainer.hide();
-            $("#media-menu").hide();
-            unperspective();
-            break;
+//        case 'drag':
+//            $("#div"+ canvasID).draggable({disabled: false});
+//            slidecontainer.hide();
+//            contentcontainer.hide();
+//            $("#media-menu").hide();
+//            unperspective();
+//            break;
         case 'resize':
-            $("#div"+ canvasID).draggable({disabled: true});
+            //$("#div"+ canvasID).draggable({disabled: true});
             slidecontainer.show();
             contentcontainer.hide();
             $("#media-menu").hide();
@@ -256,14 +276,14 @@ function activateMenu(action) {
             unperspective();
             break;
         case 'perspective':
-            $("#div"+ canvasID).draggable({disabled: true});
+            //$("#div"+ canvasID).draggable({disabled: true});
             slidecontainer.hide();
             contentcontainer.hide();
             $("#media-menu").hide();
             perspective();
             break;
         case 'content':
-            $("#div"+ canvasID).draggable({disabled: true});
+            //$("#div"+ canvasID).draggable({disabled: true});
             slidecontainer.hide();
             unperspective();
             contentcontainer.show();
@@ -271,7 +291,7 @@ function activateMenu(action) {
             addContent();
             break;
         default:
-            $("#div"+ canvasID).draggable({disabled: false});
+            //$("#div"+ canvasID).draggable({disabled: false});
             slidecontainer.hide();
             contentcontainer.hide();
             unperspective();
@@ -334,7 +354,7 @@ function changeGrid(){
 
             boxSizing: 'border-box',
             height: n_grid[2],
-            border: '0.5vw solid rgb(61, 64, 68)',
+            border: '0.25vw solid rgb(61, 64, 68)',
             zIndex: 3,
             background: 'transparent'
 
@@ -412,7 +432,7 @@ function perspective(){
     var targetPoint;
 
     function onMouseMove(e) {
-        console.log(e)
+        //console.log(e)
         targetPoint.x = e.pageX - container.offset().left ;
         targetPoint.y = e.pageY - container.offset().top ;
 //        console.log(targetPoint.x,targetPoint.y);
@@ -431,7 +451,7 @@ function perspective(){
         }
     }
 //    pts.mousedown(function(e) {
-    $("#div"+ canvasID).css('border', '1.5vw solid transparent');
+    $("#div"+ canvasID).css('border', '0.5vw solid transparent');
 
     pts.draggable();
     pts.mousedown(function(e) {
@@ -528,7 +548,7 @@ function addContent(){
                 height: '100%',
                 left: '0',
                 boxSizing: 'border-box',
-                border: '1.5vw solid transparent',
+                border: '0.5vw solid transparent',
                 zIndex: 2
             }).appendTo('#canvas-div' + canvasID);
 
