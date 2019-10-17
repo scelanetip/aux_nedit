@@ -200,8 +200,7 @@ $(function () {
 var slidecontainer = $(".slidecontainer");
 var contentcontainer = $(".content-container");
 $('#menu-icon').on('click touch', function (e) {
-    console.log("entra");
-    console.log($(this).hasClass('unselected') );
+
     if($(this).hasClass('unselected')){
         $("#action-menu").show();
         $(this).css('color', '#fff');

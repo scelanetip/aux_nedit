@@ -202,15 +202,15 @@ width: 100%;
     position: fixed;
     z-index: 2;
     left: 0;
-    top: 25%;
-    margin-left: 3%;
+    top: 0;
+    margin-left: 6%;
 }
 
 .dropdown-content {
   position: absolute;
-  height: 25vw;
-  width: fit-content;
-  background-color: transparent;
+  height: 18vw;
+  width: 16vw;
+  background-color: #00000082;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 2;
