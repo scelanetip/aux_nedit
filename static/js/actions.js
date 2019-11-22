@@ -331,12 +331,12 @@ function changeGrid(){
             sel_grid = parseInt($(this).attr("id"));
             switch(sel_grid) {
                 case 2: n_grid = [2, '50%', '100%'];break;
-                case 3: n_grid= [3, '33.33%', '100%'];break;
+                case 3: n_grid= [3, '33.3333333%', '100%'];break;
                 case 4: n_grid = [4, '50%', '50%'];break;
-                case 6: n_grid = [6, '33.33%', '50%'];break;
+                case 6: n_grid = [6, '33.333333%', '50%'];break;
                 case 8: n_grid = [8, '25%', '50%'];break;
-                case 9: n_grid = [9, '33.33%', '33.33%'];break;
-                default: n_grid = [9, '33.33%', '33.33%'];break;
+                case 9: n_grid = [9, '33.3333333%', '33.3333333%'];break;
+                default: n_grid = [9, '33.333333%', '33.3333333%'];break;
                 }
             }
 
